@@ -15,7 +15,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 import z, { Orientation } from "@/components/resizable/resizable_container";
 import { ThemeContext, Themes } from "@/context/theme";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import { useCustomWebSocket } from "@/hooks/useWebSocket";
 import { ProgramState } from "@/types/program";
 import { SocketState } from "@/types/socket";
@@ -26,7 +25,7 @@ import { useLocalCode } from "@/hooks/useLocalCode";
 import ResizableContainer from "@/components/resizable/resizable_container";
 
 export default function Page() {
-  const [currentTheme, setTheme] = useLocalStorage("theme", Themes.Dark);
+  const [currentTheme, setTheme] = useState(Themes.Dark);
   const { getCode, saveCodeToLocalStorage, clearLocalStorageCode } =
     useLocalCode();
   const [code, setCode] = useState(getCode(DefaultLanguage));
@@ -111,6 +110,13 @@ export default function Page() {
     setEditorContainerWidth(containerRef.current.offsetWidth);
     setConsoleContainerHeight(containerRef.current.offsetHeight);
   }, []);
+
+  useEffect(() => {
+    let theme = localStorage.getItem("theme");
+    if (theme != null) {
+      setTheme(theme);
+    }
+  }, [currentTheme]);
 
   return (
     <ThemeContext.Provider value={currentTheme}>

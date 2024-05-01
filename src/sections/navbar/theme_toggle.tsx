@@ -1,15 +1,18 @@
-import { useContext } from "react";
+"use client";
+
+import { useContext, useEffect, useState } from "react";
 import styles from "./navbar.module.css";
 import { ThemeContext, Themes } from "@/context/theme";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function Toggler({ onToggle }) {
-  const [theme] = useLocalStorage("theme");
+  const theme = useContext(ThemeContext);
 
   const handleToggle = () => {
     onToggle();
   };
+
+  useEffect(() => {}, [theme]);
 
   return (
     <div className={styles.theme_toggler} onClick={handleToggle}>

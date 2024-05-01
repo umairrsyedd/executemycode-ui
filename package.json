@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@codemirror/language": "^6.10.1",
-    "@uidotdev/usehooks": "^2.4.1",
     "@uiw/codemirror-extensions-langs": "^4.21.24",
     "@uiw/codemirror-theme-andromeda": "^4.21.24",
     "@uiw/codemirror-theme-quietlight": "^4.21.24",

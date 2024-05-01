@@ -27,6 +27,8 @@ export default function EditorComponent({
     setCode(event);
   }, 500);
 
+  useEffect(() => {}, [theme]);
+
   return (
     <div className={styles.editor}>
       <div className={styles.editor__topbar}>

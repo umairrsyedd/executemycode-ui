@@ -11,7 +11,10 @@ export const useLocalCode = () => {
 
   const getLocalStorageCode = (language: LanguageName) => {
     try {
-      const storedCode = localStorage.getItem(getKeyName(language));
+      let storedCode = "";
+      if (typeof window !== "undefined") {
+        storedCode = localStorage.getItem(getKeyName(language));
+      }
       return { code: storedCode || "", exists: storedCode !== null };
     } catch (error) {
       console.error("Error accessing localStorage:", error);
@@ -26,7 +29,9 @@ export const useLocalCode = () => {
 
   const saveCodeToLocalStorage = (language: LanguageName, code: string) => {
     try {
-      localStorage.setItem(getKeyName(language), code);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(getKeyName(language), code);
+      }
     } catch (error) {
       console.error("Error saving code to localStorage:", error);
     }
@@ -34,7 +39,9 @@ export const useLocalCode = () => {
 
   const clearLocalStorageCode = (language: LanguageName) => {
     try {
-      localStorage.removeItem(getKeyName(language));
+      if (typeof window !== "undefined") {
+        localStorage.removeItem(getKeyName(language));
+      }
     } catch (error) {
       console.error("Error clearing localStorage code:", error);
     }
