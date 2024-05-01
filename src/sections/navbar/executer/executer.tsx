@@ -1,8 +1,5 @@
 import styles from "./executer.module.css";
 
-import RunLogo from "../../../public/Run_Button.svg";
-import StopLogo from "../../../public/Stop_Button.svg";
-
 import Image from "next/image";
 import ExecuteButton from "./execute_button";
 import { useState } from "react";

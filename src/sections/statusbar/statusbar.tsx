@@ -3,7 +3,6 @@ import styles from "./statusbar.module.css";
 import { SocketState } from "@/types/socket";
 import { LuServer, LuServerCrash, LuServerOff } from "react-icons/lu";
 import { FaHeart } from "react-icons/fa";
-import RCLogo from "../../../public/rc_logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,7 +34,12 @@ export default function StatusBar({ connectionStatus }) {
         by Umair at
         <span className={styles.rc_logo}>
           <Link href={RC_SCOUT_LINK} target="_blank" rel="noopener">
-            <Image src={RCLogo} height={20} alt="Recurse Center Logo" />
+            <Image
+              src={"/rc_logo.svg"}
+              height={20}
+              width={20}
+              alt="Recurse Center Logo"
+            />
           </Link>
         </span>
       </div>
