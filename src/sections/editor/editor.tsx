@@ -25,7 +25,7 @@ export default function EditorComponent({
 
   const debouncedCodeSetter = _.debounce((event) => {
     setCode(event);
-  }, 500);
+  }, 50);
 
   useEffect(() => {}, [theme]);
 
